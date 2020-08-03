@@ -1,0 +1,13 @@
+PEJ\OrderController.class
+PEJ\Shipped.class
+PEJ\external\DeliveryService.class
+PEJ\Order.class
+PEJ\OrderCanceled.class
+PEJ\OrderRepository.class
+PEJ\config\kafka\KafkaProcessor.class
+PEJ\PolicyHandler.class
+PEJ\external\Delivery.class
+PEJ\AbstractEvent$1.class
+PEJ\Ordered.class
+PEJ\AbstractEvent.class
+PEJ\OrderApplication.class
