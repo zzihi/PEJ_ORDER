@@ -33,6 +33,7 @@ public class Order {
     @PreUpdate
     public void onPreUpdate(){
 
+        System.out.println("orderCanceled.setOrderStatus(\"CANCELLED\")");
         OrderCanceled orderCanceled = new OrderCanceled();
         BeanUtils.copyProperties(this, orderCanceled);
         orderCanceled.setOrderStatus("CANCELLED");

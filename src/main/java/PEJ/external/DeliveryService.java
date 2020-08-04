@@ -14,7 +14,7 @@ public interface DeliveryService {
 
 //    @RequestMapping(method= RequestMethod.DELETE, path="/deliveries/{ordId}")
 //    public void cancelDelivery(@PathVariable("ordId") Long ordId);
-//    @RequestMapping(method = RequestMethod.PUT, value = "/deliveries/cancelDelivery/{ordId}", consumes = "application/json")
+//    @RequestMapping(method = RequestMethod.POST, path="/cancellations/{ordId}", consumes = "application/json")
 //    void cancelDelivery(@PathVariable("ordId") Long ordId);
     @RequestMapping(method = RequestMethod.POST, path="/cancellations")
     void cancelDelivery(@RequestBody Delivery delivery);
