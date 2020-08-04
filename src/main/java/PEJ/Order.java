@@ -32,21 +32,20 @@ public class Order {
 
     @PreUpdate
     public void onPreUpdate(){
+        if("CANCELLED".equals(this.orderStatus)){
+            System.out.println("orderCanceled.setOrderStatus(\"CANCELLED\")");
+            OrderCanceled orderCanceled = new OrderCanceled();
+            BeanUtils.copyProperties(this, orderCanceled);
+            orderCanceled.setOrderStatus("CANCELLED");
+            orderCanceled.publishAfterCommit();
 
-        System.out.println("orderCanceled.setOrderStatus(\"CANCELLED\")");
-        OrderCanceled orderCanceled = new OrderCanceled();
-        BeanUtils.copyProperties(this, orderCanceled);
-        orderCanceled.setOrderStatus("CANCELLED");
-        orderCanceled.publishAfterCommit();
+            PEJ.external.Delivery delivery = new PEJ.external.Delivery();
+            delivery.setOrderId(orderCanceled.getOrderId());
+            delivery.setDeliveryStatus("CANCELLED");
 
-        PEJ.external.Delivery delivery = new PEJ.external.Delivery();
-        delivery.setOrderId(orderCanceled.getOrderId());
-        delivery.setDeliveryStatus("CANCELLED");
-
-        OrderApplication.applicationContext.getBean(PEJ.external.DeliveryService.class)
-                .cancelDelivery(delivery);
-
-
+            OrderApplication.applicationContext.getBean(PEJ.external.DeliveryService.class)
+                    .cancelDelivery(delivery);
+        }
     }
 
     public Long getId() {
