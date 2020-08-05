@@ -42,16 +42,6 @@ api:
   url:
     delivery: http://localhost:8088
 
-feign:
-  hystrix:
-    enabled: true
-
-hystrix:
-  command:
-    # 전역설정
-    default:
-      execution.isolation.thread.timeoutInMilliseconds: 610
-
 ---
 
 spring:
